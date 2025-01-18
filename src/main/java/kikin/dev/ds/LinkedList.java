@@ -51,6 +51,18 @@ public class LinkedList <T> {
     return temp;
   }
 
+  public void prepend(T value) {
+    Node<T> newNode = new Node<>(value);
+    if (length == 0) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.setNext(head);
+      this.head = newNode;
+    }
+    this.length++;
+  }
+
   public Node<T> getHead() {
     return head;
   }

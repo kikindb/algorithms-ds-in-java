@@ -67,4 +67,30 @@ public class LinkedListTest {
     assertEquals(9, linkedList.getTail().getValue());
     assertEquals(4, linkedList.getLength());
   }
+
+  // Prepend Unit Tests
+  @Test
+  public void shouldPrependWorkWhenNotNodesInLL() {
+    linkedList = new LinkedList<>();
+    assertEquals(0, linkedList.getLength());
+    linkedList.prepend(200);
+    assertEquals(1, linkedList.getLength());
+    assertEquals(200, linkedList.getHead().getValue());
+    assertEquals(200, linkedList.getTail().getValue());
+    Assertions.assertNull(linkedList.getTail().getNext());
+  }
+
+  @Test
+  public void shouldPrependWorkWhenNodesPresentInLL() {
+    linkedList = new LinkedList<>(100);
+    linkedList.append(300);
+    linkedList.append(800);
+    assertEquals(3, linkedList.getLength());
+    linkedList.prepend(200);
+    assertEquals(4, linkedList.getLength());
+    assertEquals(200, linkedList.getHead().getValue());
+    assertEquals(800, linkedList.getTail().getValue());
+    Assertions.assertNull(linkedList.getTail().getNext());
+  }
+
 }
