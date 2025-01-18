@@ -30,6 +30,25 @@ public class LinkedList <T> {
 
   public Node<T> removeLast() {
     if (length == 0) return null;
+
+    Node<T> temp = this.head;
+    Node<T> pre = this.head;
+
+    while (temp.getNext() != null) {
+      pre = temp;
+      temp = temp.getNext();
+    }
+
+    this.tail = pre;
+    this.tail.setNext(null);
+    this.length--;
+
+    if (length == 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
   }
 
   public Node<T> getHead() {
