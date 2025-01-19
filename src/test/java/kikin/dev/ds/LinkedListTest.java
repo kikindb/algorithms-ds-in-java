@@ -146,4 +146,15 @@ public class LinkedListTest {
     Assertions.assertTrue(linkedList.setValueByIndex(0, 120));
     assertEquals(120, linkedList.getByIndex(0).getValue());
   }
+
+  // insert Unit Tests
+  @Test
+  public void shouldInsert() {
+    linkedList = new LinkedList<>(0);
+    linkedList.append(100);
+    linkedList.append(200);
+    linkedList.append(300);
+    Assertions.assertTrue(linkedList.insert(2, 220));
+    assertEquals(220, linkedList.getByIndex(2).getValue());
+  }
 }

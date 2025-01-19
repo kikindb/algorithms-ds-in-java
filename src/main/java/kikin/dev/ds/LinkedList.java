@@ -104,6 +104,24 @@ public class LinkedList <T> {
     return false;
   }
 
+  public boolean insert(int index, T value) {
+    if (index < 0 || index > length) return false;
+
+    if (index == 0) {
+      prepend(value);
+      return true;
+    } else if (index == length) {
+      append(value);
+      return true;
+    }
+    Node<T> newNode = new Node<>(value);
+    Node<T> temp = getByIndex(index - 1);
+    newNode.setNext(temp.getNext());
+    temp.setNext(newNode);
+    length++;
+    return true;
+  }
+
   public Node<T> getHead() {
     return head;
   }
