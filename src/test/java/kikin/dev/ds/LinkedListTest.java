@@ -177,4 +177,21 @@ public class LinkedListTest {
     assertNull(linkedList.getHead());
     assertEquals(0, linkedList.getLength());
   }
+
+  // reverse Unit Tests
+  @Test
+  public void shouldReverse() {
+    linkedList = new LinkedList<>(0);
+    linkedList.append(100);
+    linkedList.append(200);
+    linkedList.append(300);
+
+    assertEquals(0, linkedList.getHead().getValue());
+    assertEquals(300, linkedList.getTail().getValue());
+
+    linkedList.reverse();
+
+    assertEquals(300, linkedList.getHead().getValue());
+    assertEquals(0, linkedList.getTail().getValue());
+  }
 }
