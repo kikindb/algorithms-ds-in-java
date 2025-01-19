@@ -122,6 +122,21 @@ public class LinkedList <T> {
     return true;
   }
 
+  public Node<T> remove(int index) {
+    if (index < 0 || index >= length) return null;
+    if (index == 0) return removeFirst();
+    if (index == length - 1) return removeLast();
+
+    Node<T> prev = getByIndex(index - 1);
+    Node<T> temp = prev.getNext();
+
+    prev.setNext(temp.getNext());
+    temp.setNext(null);
+    length--;
+
+    return temp;
+  }
+
   public Node<T> getHead() {
     return head;
   }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class LinkedListTest {
   LinkedList<Integer> linkedList;
@@ -155,6 +156,25 @@ public class LinkedListTest {
     linkedList.append(200);
     linkedList.append(300);
     Assertions.assertTrue(linkedList.insert(2, 220));
+    assertEquals(100, linkedList.getByIndex(1).getValue());
     assertEquals(220, linkedList.getByIndex(2).getValue());
+    assertEquals(200, linkedList.getByIndex(3).getValue());
+    assertEquals(5, linkedList.getLength());
+  }
+
+  // remove Unit Tests
+  @Test
+  public void shouldRemove() {
+    linkedList = new LinkedList<>(0);
+    linkedList.append(100);
+    linkedList.append(200);
+    linkedList.append(300);
+    assertEquals(100, linkedList.remove(1).getValue());
+    assertEquals(200, linkedList.remove(1).getValue());
+    assertEquals(300, linkedList.remove(1).getValue());
+    assertEquals(0, linkedList.remove(0).getValue());
+    assertNull(linkedList.remove(2));
+    assertNull(linkedList.getHead());
+    assertEquals(0, linkedList.getLength());
   }
 }
