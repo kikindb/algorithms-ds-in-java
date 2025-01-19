@@ -141,7 +141,7 @@ public class LinkedList <T> {
     Node<T> temp = head;
     head = tail;
     tail = temp;
-    Node<T> after = temp.getNext();
+    Node<T> after;
     Node<T> before = null;
 
     for (int i = 0; i < length; i++) {
