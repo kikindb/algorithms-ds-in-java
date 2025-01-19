@@ -63,6 +63,36 @@ public class LinkedList <T> {
     this.length++;
   }
 
+  public Node<T> removeFirst() {
+    if (this.length == 0) return null;
+
+    Node<T> temp = this.head;
+    this.head = this.head.getNext();
+    temp.setNext(null);
+    this.length--;
+
+    if (length == 0) {
+      this.tail = null;
+    }
+
+    return temp;
+  }
+
+  public Node<T> getByIndex(int index) {
+    if (length == 0 || index < 0 || index >= length) return null;
+    int counter = 0;
+    Node<T> temp = this.head;
+
+    while (temp.getNext() != null) {
+      if (index == counter) {
+        break;
+      }
+      temp = temp.getNext();
+      counter++;
+    }
+    return temp;
+  }
+
   public Node<T> getHead() {
     return head;
   }

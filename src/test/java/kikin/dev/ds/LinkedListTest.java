@@ -93,4 +93,47 @@ public class LinkedListTest {
     Assertions.assertNull(linkedList.getTail().getNext());
   }
 
+  // Remove First Unit Tests
+
+  @Test
+  public void shouldReturnNullIfTryToRemoveFirstAndLLIsEmpty() {
+    linkedList = new LinkedList<>();
+    Assertions.assertNull(linkedList.removeFirst());
+  }
+
+  @Test
+  public void shouldRemoveFirstNode() {
+    linkedList = new LinkedList<>(100);
+    linkedList.append(340);
+    linkedList.append(0);
+    linkedList.append(899);
+    assertEquals(100, linkedList.getHead().getValue());
+    assertEquals(100, linkedList.removeFirst().getValue());
+    assertEquals(340, linkedList.getHead().getValue());
+    assertEquals(340, linkedList.removeFirst().getValue());
+    assertEquals(0, linkedList.getHead().getValue());
+    assertEquals(0, linkedList.removeFirst().getValue());
+    assertEquals(899, linkedList.getHead().getValue());
+    assertEquals(899, linkedList.removeFirst().getValue());
+    Assertions.assertNull(linkedList.getHead());
+    Assertions.assertNull(linkedList.getTail());
+  }
+
+  // getByIndex Unit Tests
+  @Test
+  public void shouldGetNodeByIndex() {
+    linkedList = new LinkedList<>(100);
+    linkedList.append(200);
+    linkedList.append(300);
+    linkedList.append(400);
+
+    assertEquals(100, linkedList.getByIndex(0).getValue());
+    assertEquals(200, linkedList.getByIndex(1).getValue());
+    assertEquals(300, linkedList.getByIndex(2).getValue());
+    assertEquals(400, linkedList.getByIndex(3).getValue());
+    Assertions.assertNull(linkedList.getByIndex(4));
+    Assertions.assertNull(linkedList.getByIndex(-1));
+
+  }
+
 }
