@@ -136,6 +136,7 @@ public class LinkedList <T> {
 
     return temp;
   }
+
   // reverse in place
   public void reverse() {
     Node<T> temp = head;
@@ -150,6 +151,19 @@ public class LinkedList <T> {
       before = temp;
       temp = after;
     }
+  }
+
+  public boolean hasCycle() {
+    Node<T> fast = head;
+    Node<T> slow = head;
+
+    while (fast != null && fast.getNext() != null) {
+      slow = slow.getNext();
+      fast = fast.getNext().getNext();
+      if (slow == fast) return true;
+    }
+
+    return false;
   }
 
   public Node<T> getHead() {

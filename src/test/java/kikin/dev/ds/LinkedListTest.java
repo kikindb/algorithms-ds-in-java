@@ -194,4 +194,16 @@ public class LinkedListTest {
     assertEquals(300, linkedList.getHead().getValue());
     assertEquals(0, linkedList.getTail().getValue());
   }
+
+  // hasCycle Unit Tests
+  @Test
+  void shouldFindIfLLHasCycles() {
+    linkedList = new LinkedList<>(0);
+    linkedList.append(100);
+    linkedList.append(200);
+    linkedList.append(300);
+    Assertions.assertFalse(linkedList.hasCycle());
+    linkedList.getTail().setNext(linkedList.getHead());
+    Assertions.assertTrue(linkedList.hasCycle());
+  }
 }
