@@ -93,6 +93,17 @@ public class LinkedList <T> {
     return temp;
   }
 
+  public boolean setValueByIndex(int index, T value) {
+    Node<T> temp = getByIndex(index);
+
+    if (temp != null) {
+      temp.setValue(value);
+      return true;
+    }
+
+    return false;
+  }
+
   public Node<T> getHead() {
     return head;
   }

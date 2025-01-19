@@ -133,7 +133,17 @@ public class LinkedListTest {
     assertEquals(400, linkedList.getByIndex(3).getValue());
     Assertions.assertNull(linkedList.getByIndex(4));
     Assertions.assertNull(linkedList.getByIndex(-1));
-
   }
 
+  // setValueByIndex Unit Tests
+  @Test
+  public void shouldSetValueByIndex() {
+    linkedList = new LinkedList<>();
+    Assertions.assertFalse(linkedList.setValueByIndex(2, 3));
+    linkedList.append(100);
+    linkedList.append(200);
+    linkedList.append(300);
+    Assertions.assertTrue(linkedList.setValueByIndex(0, 120));
+    assertEquals(120, linkedList.getByIndex(0).getValue());
+  }
 }
