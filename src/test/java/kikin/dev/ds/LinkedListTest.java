@@ -298,4 +298,55 @@ public class LinkedListTest {
     // Expected: 1 -> 2 -> 5 -> 5 -> 5 -> null
     assertEquals("1 -> 2 -> 5 -> 5 -> 5 -> null", intList.toString());
   }
+
+  // removeDuplicates Unit Tests
+  @Test
+  void testRemoveDuplicates() {
+    LinkedList<Integer> list = new LinkedList<>();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    list.append(1);
+    list.append(4);
+    list.append(2);
+    list.append(5);
+
+    list.removeDuplicates();
+
+    assertEquals("1 -> 2 -> 3 -> 4 -> 5 -> null", list.toString());
+  }
+
+  @Test
+  void testRemoveDuplicatesAllUnique() {
+    LinkedList<Integer> list = new LinkedList<>();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+
+    list.removeDuplicates();
+
+    assertEquals("1 -> 2 -> 3 -> null", list.toString());
+  }
+
+  @Test
+  void testRemoveDuplicatesAllSame() {
+    LinkedList<Integer> list = new LinkedList<>();
+    list.append(1);
+    list.append(1);
+    list.append(1);
+
+    list.removeDuplicates();
+
+    assertEquals("1 -> null", list.toString());
+  }
+
+  @Test
+  void testRemoveDuplicatesEmptyList() {
+    LinkedList<Integer> list = new LinkedList<>();
+
+    list.removeDuplicates();
+
+    assertEquals("null", list.toString());
+  }
+
 }

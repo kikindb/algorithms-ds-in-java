@@ -1,5 +1,8 @@
 package kikin.dev.ds;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList <T extends Comparable<T>> {
   private Node<T> head;
   private Node<T> tail;
@@ -221,6 +224,26 @@ public class LinkedList <T extends Comparable<T>> {
     before.setNext(dummyAfter.getNext()); // Merge before and after lists
 
     head = dummyBefore.getNext(); // Update head to new partitioned list
+  }
+
+  public void removeDuplicates() {
+    if (head == null) return;
+
+    Set<T> seen = new HashSet<>();
+    Node<T> current = head;
+    Node<T> prev = null;
+
+    while (current != null) {
+      if (seen.contains(current.getValue())) {
+        prev.setNext(current.getNext()); // Remove duplicate
+        length--;
+      } else {
+        seen.add(current.getValue());
+        prev = current; // Move prev forward
+      }
+      current = current.getNext();
+    }
+    System.out.println(seen);
   }
 
   public Node<T> getHead() {
