@@ -205,5 +205,10 @@ public class LinkedListTest {
     Assertions.assertFalse(linkedList.hasCycle());
     linkedList.getTail().setNext(linkedList.getHead());
     Assertions.assertTrue(linkedList.hasCycle());
+
+    linkedList = new LinkedList<>(100);
+    Assertions.assertFalse(linkedList.hasCycle());
+    linkedList.getTail().setNext(linkedList.getHead());
+    Assertions.assertTrue(linkedList.hasCycle());
   }
 }

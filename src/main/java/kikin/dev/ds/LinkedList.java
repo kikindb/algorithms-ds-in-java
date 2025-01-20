@@ -154,6 +154,7 @@ public class LinkedList <T> {
   }
 
   public boolean hasCycle() {
+    if (length == 0) return false;
     Node<T> fast = head;
     Node<T> slow = head;
 
@@ -164,6 +165,34 @@ public class LinkedList <T> {
     }
 
     return false;
+  }
+
+  public Node<T> findMiddleNode () {
+    Node<T> fast = head;
+    Node<T> slow = head;
+
+    while (fast != null && fast.getNext() != null) {
+      slow = slow.getNext();
+      fast = fast.getNext().getNext();
+    }
+
+    return slow;
+  }
+
+  public Node<T> findKthFromEnd(int k) {
+    Node<T> fast = head;
+    Node<T> slow = head;
+
+    for (int i = 0; i < k; i++) {
+      if(fast == null) return null;
+      fast = fast.getNext();
+    }
+
+    while (fast != null) {
+      fast = fast.getNext();
+      slow = slow.getNext();
+    }
+    return slow;
   }
 
   public Node<T> getHead() {
