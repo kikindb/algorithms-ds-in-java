@@ -2,16 +2,16 @@ package kikin.dev.algorithms;
 
 public class BinarySearch {
 
-  public static int binarySearch(int[] values, int toFind) {
+  public static int binarySearch(int[] values, int target) {
     int low = 0;
     int high = values.length - 1;
 
     while (low <= high) {
       int middle = (low + high) / 2;
 
-      if (values[middle] == toFind) {
+      if (values[middle] == target) {
         return middle;
-      } else if (values[middle] < toFind) {
+      } else if (values[middle] < target) {
         low = middle + 1;
       } else {
         high = middle - 1;
