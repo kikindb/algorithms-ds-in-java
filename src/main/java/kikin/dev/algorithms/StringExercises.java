@@ -31,7 +31,7 @@ public class StringExercises {
     }
 
     return aux;
-
+    // functional way
     //return Collections.max(hashMap.entrySet(), Map.Entry.comparingByValue()).getKey();
   }
 }

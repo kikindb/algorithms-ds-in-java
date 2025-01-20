@@ -1,6 +1,6 @@
 package kikin.dev.ds;
 
-public class LinkedList <T> {
+public class LinkedList <T extends Comparable<T>> {
   private Node<T> head;
   private Node<T> tail;
   private int length;
@@ -195,6 +195,34 @@ public class LinkedList <T> {
     return slow;
   }
 
+  public void partitionList(T x) {
+    if (head == null) return;
+
+    Node<T> dummyBefore = new Node<>(null); // Dummy head for before partition
+    Node<T> before = dummyBefore;           // Pointer for before partition
+
+    Node<T> dummyAfter = new Node<>(null);  // Dummy head for after partition
+    Node<T> after = dummyAfter;             // Pointer for after partition
+
+    Node<T> current = head;
+
+    while (current != null) {
+      if (current.getValue().compareTo(x) < 0) { // If value < x
+        before.setNext(current);
+        before = before.getNext();
+      } else { // If value >= x
+        after.setNext(current);
+        after = after.getNext();
+      }
+      current = current.getNext();
+    }
+
+    after.setNext(null); // End the after list
+    before.setNext(dummyAfter.getNext()); // Merge before and after lists
+
+    head = dummyBefore.getNext(); // Update head to new partitioned list
+  }
+
   public Node<T> getHead() {
     return head;
   }
@@ -217,10 +245,14 @@ public class LinkedList <T> {
 
   @Override
   public String toString() {
-    return "LinkedList{" +
-        "head=" + head +
-        ", tail=" + tail +
-        ", length=" + length +
-        '}';
+    StringBuilder sb = new StringBuilder();
+    Node<T> current = head;
+    while (current != null) {
+      sb.append(current.getValue()).append(" -> ");
+      current = current.getNext();
+    }
+    sb.append("null");
+    return sb.toString();
   }
+
 }

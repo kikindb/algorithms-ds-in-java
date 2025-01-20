@@ -1,6 +1,7 @@
 package kikin.dev.ds;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,6 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class LinkedListTest {
   LinkedList<Integer> linkedList;
+
+  private LinkedList<Integer> intList;
+  private LinkedList<String> strList;
+
+  @BeforeEach
+  void setUp() {
+    intList = new LinkedList<>();
+    strList = new LinkedList<>();
+  }
+
   @Test
   public void shouldCreateNewLinkedList() {
     linkedList = new LinkedList<>(4);
@@ -210,5 +221,81 @@ public class LinkedListTest {
     Assertions.assertFalse(linkedList.hasCycle());
     linkedList.getTail().setNext(linkedList.getHead());
     Assertions.assertTrue(linkedList.hasCycle());
+  }
+
+  // partitionList Unit Tests
+  @Test
+  void testPartitionIntegerList() {
+    intList.append(3);
+    intList.append(8);
+    intList.append(5);
+    intList.append(10);
+    intList.append(2);
+    intList.append(1);
+
+    intList.partitionList(5);
+    // b: 3 -> 2 -> 1
+    // a: 8 -> 5 -> 10 -> null
+
+    // Expected order: 3 -> 2 -> 1 -> 8 -> 5 -> 10 -> null
+    assertEquals("3 -> 2 -> 1 -> 8 -> 5 -> 10 -> null", intList.toString());
+  }
+
+  @Test
+  void testPartitionStringList() {
+    strList.append("banana");
+    strList.append("apple");
+    strList.append("grape");
+    strList.append("pear");
+    strList.append("kiwi");
+
+    strList.partitionList("grape");
+
+    // Expected order: "banana -> apple -> grape -> pear -> kiwi -> null"
+    assertEquals("banana -> apple -> grape -> pear -> kiwi -> null", strList.toString());
+  }
+
+  @Test
+  void testEmptyList() {
+    intList.partitionList(5);
+    assertNull(intList.getHead());
+  }
+
+  @Test
+  void testAllElementsLessThanX() {
+    intList.append(1);
+    intList.append(2);
+    intList.append(3);
+
+    intList.partitionList(5);
+
+    // Order should remain the same
+    assertEquals("1 -> 2 -> 3 -> null", intList.toString());
+  }
+
+  @Test
+  void testAllElementsGreaterThanOrEqualToX() {
+    intList.append(7);
+    intList.append(8);
+    intList.append(9);
+
+    intList.partitionList(5);
+
+    // Order should remain the same
+    assertEquals("7 -> 8 -> 9 -> null", intList.toString());
+  }
+
+  @Test
+  void testElementsEqualToX() {
+    intList.append(5);
+    intList.append(1);
+    intList.append(5);
+    intList.append(2);
+    intList.append(5);
+
+    intList.partitionList(5);
+
+    // Expected: 1 -> 2 -> 5 -> 5 -> 5 -> null
+    assertEquals("1 -> 2 -> 5 -> 5 -> 5 -> null", intList.toString());
   }
 }

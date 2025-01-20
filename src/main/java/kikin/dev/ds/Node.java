@@ -1,6 +1,6 @@
 package kikin.dev.ds;
 
-public class Node <T> {
+public class Node <T extends Comparable<T>> {
   private T value;
   private Node<T> next;
 
