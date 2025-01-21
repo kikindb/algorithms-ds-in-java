@@ -138,8 +138,8 @@ public class DoublyLinkedList <T extends Comparable<T>> {
 
   public DLLNode<T> remove (int index) {
     if (index < 0 || index >= length) return null;
-    if (index == length - 1) return removeLast();
     if (index == 0) return removeFirst();
+    if (index == length - 1) return removeLast();
 
     DLLNode<T> current = getByIndex(index);
     DLLNode<T> after = (DLLNode<T>) current.getNext();
