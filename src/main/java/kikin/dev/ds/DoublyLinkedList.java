@@ -101,6 +101,20 @@ public class DoublyLinkedList <T extends Comparable<T>> {
     return temp;
   }
 
+  public boolean setByIndex(int index, T value) {
+    DLLNode<T> temp = getByIndex(index);
+
+    if (temp != null) {
+      temp.setValue(value);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean insert(int index, T value) {
+    return false;
+  }
+
   public DLLNode<T> getHead() {
     return head;
   }
