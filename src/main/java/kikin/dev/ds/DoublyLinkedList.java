@@ -52,8 +52,35 @@ public class DoublyLinkedList <T extends Comparable<T>> {
     return temp;
   }
 
-  public void prepend() {
+  public void prepend(T value) {
+    DLLNode<T> newNode = new DLLNode<>(value);
+    if (length == 0) {
+      head = newNode;
+      tail = newNode;
+    } else {
+      newNode.setNext(head);
+      head.setPrevious(newNode);
+      head = newNode;
+    }
+    length++;
+  }
 
+  public DLLNode<T> removeFirst() {
+    if (length == 0) return null;
+
+    DLLNode<T> temp = head;
+
+    if (length == 1) {
+      head = null;
+      tail = null;
+    } else {
+      head = (DLLNode<T>) head.getNext();
+      head.setPrevious(null);
+      temp.setNext(null);
+    }
+
+    length--;
+    return temp;
   }
 
   public DLLNode<T> getHead() {
