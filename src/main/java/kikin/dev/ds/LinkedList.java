@@ -246,6 +246,24 @@ public class LinkedList <T extends Comparable<T>> {
     System.out.println(seen);
   }
 
+  public int binaryToDecimal() {
+    Node<T> current = head;
+    double acc = 0;
+    double counter = length - 1;
+    while(current != null) {
+      double currNum = Double.parseDouble(current.getValue().toString());
+
+      if (currNum > 0) {
+        acc += Math.pow(2, counter);
+      }
+
+      current = current.getNext();
+      counter--;
+    }
+
+    return (int) acc;
+  }
+
   public Node<T> getHead() {
     return head;
   }

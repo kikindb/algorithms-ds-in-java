@@ -349,4 +349,13 @@ public class LinkedListTest {
     assertEquals("null", list.toString());
   }
 
+  // binaryToDecimal Unit Tests
+  @Test
+  void shouldTransformBinaryToDecimal() {
+    intList = new LinkedList<>(1);
+    intList.append(0);
+    intList.append(1);
+    assertEquals(5, intList.binaryToDecimal());
+  }
+
 }
