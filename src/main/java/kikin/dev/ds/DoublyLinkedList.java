@@ -83,6 +83,24 @@ public class DoublyLinkedList <T extends Comparable<T>> {
     return temp;
   }
 
+  public DLLNode<T> getByIndex (int index) {
+    if (index < 0 | index >= length) return null;
+
+    DLLNode<T> temp = head;
+
+    if (index < length/2) {
+      for (int i = 0; i < index; i++) {
+        temp = (DLLNode<T>) temp.getNext();
+      }
+    } else {
+      temp = tail;
+      for (int i = length -1 ; i > index; i--) {
+        temp = temp.getPrevious();
+      }
+    }
+    return temp;
+  }
+
   public DLLNode<T> getHead() {
     return head;
   }
