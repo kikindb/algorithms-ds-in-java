@@ -112,7 +112,28 @@ public class DoublyLinkedList <T extends Comparable<T>> {
   }
 
   public boolean insert(int index, T value) {
-    return false;
+    if (index < 0 || index > length) return false;
+
+    if (index == 0) {
+      prepend(value);
+      return true;
+    } else if (length == index) {
+      append(value);
+      return true;
+    }
+
+    DLLNode<T> newNode = new DLLNode<>(value);
+    DLLNode<T> before = getByIndex(index - 1);
+    DLLNode<T> after = (DLLNode<T>) before.getNext();
+
+    newNode.setPrevious(before);
+    newNode.setNext(after);
+    before.setNext(newNode);
+    after.setPrevious(newNode);
+
+    length++;
+
+    return true;
   }
 
   public DLLNode<T> getHead() {
