@@ -13,4 +13,12 @@ public class Filtering {
         .filter(number -> number % 2 == 0).toList();
   }
 
+  public static long countLongWords(List<String> words, int maxChars) {
+    return words.stream()
+        .filter(word -> word.length() > maxChars)
+        .count();
+  }
+
+
+
 }

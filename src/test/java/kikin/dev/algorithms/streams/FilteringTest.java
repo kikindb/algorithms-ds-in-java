@@ -21,4 +21,19 @@ public class FilteringTest {
   void testFilterEvenNumbersWithEmptyList() {
     assertTrue(Filtering.filterEvenNumbers(Arrays.asList()).isEmpty());
   }
+
+  // testCountLongWords
+  //Write a method countLongWords(List<String> words) that takes a list of strings
+  // and returns the count of words that have more than n characters using Java Streams.
+  @Test
+  void testCountLongWords() {
+    List<String> words = Arrays.asList("apple", "banana", "cherry", "kiwi", "strawberry");
+    assertEquals(3, Filtering.countLongWords(words, 5)); // banana, cherry, strawberry
+  }
+
+  @Test
+  void testCountLongWordsWithShortWordsOnly() {
+    List<String> words = Arrays.asList("a", "cat", "dog");
+    assertEquals(0, Filtering.countLongWords(words, 5));
+  }
 }
