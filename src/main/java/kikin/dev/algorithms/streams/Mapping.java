@@ -1,7 +1,6 @@
 package kikin.dev.algorithms.streams;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Mapping {
 
