@@ -19,7 +19,7 @@ public class FilteringTest {
 
   @Test
   void testFilterEvenNumbersWithEmptyList() {
-    assertTrue(Filtering.filterEvenNumbers(Arrays.asList()).isEmpty());
+    assertTrue(Filtering.filterEvenNumbers(List.of()).isEmpty());
   }
 
   // testCountLongWords

@@ -15,7 +15,7 @@ public class CollectingTest {
     Map<Character, List<String>> expected = new HashMap<>();
     expected.put('a', Arrays.asList("apple", "apricot"));
     expected.put('b', Arrays.asList("banana", "blueberry"));
-    expected.put('c', Arrays.asList("cherry"));
+    expected.put('c', List.of("cherry"));
     assertEquals(expected, Collecting.groupWordsByFirstLetter(words));
   }
 
