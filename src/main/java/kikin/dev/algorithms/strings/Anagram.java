@@ -22,21 +22,20 @@ public class Anagram {
   public static boolean isAnagram2(String word, String word2) {
     if (word == null || word2 == null) return false;
 
+    String cleanedWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+    String cleanedWord2 = word2.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+    if (cleanedWord.length() != cleanedWord2.length()) return false;
+
     Map<Character, Integer> hashMap = new HashMap<>();
 
-    for(char c : word.toLowerCase().toCharArray()) {
-      if (hashMap.containsKey(c)) {
-        hashMap.put(c, hashMap.get(c) + 1);
-      } else {
-        hashMap.put(c, 1);
-      }
+    for(char c : cleanedWord.toCharArray()) {
+      hashMap.put(c, hashMap.getOrDefault(c, 0) + 1);
     }
 
-    for (char c : word2.toLowerCase().toCharArray()) {
+    for (char c : cleanedWord2.toCharArray()) {
       hashMap.remove(c);
     }
-
-    System.out.println(hashMap);
 
     return hashMap.isEmpty();
   }
