@@ -10,7 +10,7 @@ public class Palindrome {
 
   public static boolean isPalindrome2(String word) {
     if (word == null) return false;
-    String cleanedWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();;
+    String cleanedWord = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
     int low = 0;
     int high = cleanedWord.length() - 1;
 
