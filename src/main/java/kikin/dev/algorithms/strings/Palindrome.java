@@ -1,14 +1,11 @@
 package kikin.dev.algorithms.strings;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class Palindrome {
 
   public static boolean isPalindrome(String word) {
     if (word == null) return false; // Edge case handling
     String cleaned = word.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-    return cleaned.equals(new StringBuilder(cleaned).reverse().toString());
+    return cleaned.contentEquals(new StringBuilder(cleaned).reverse());
   }
 
   public static boolean isPalindrome2(String word) {
