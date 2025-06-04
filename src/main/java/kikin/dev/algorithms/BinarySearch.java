@@ -46,7 +46,7 @@ public class BinarySearch {
     int high = values.length - 1;
 
     while (low <= high) {
-      int mid = (low + high) / 2;
+      int mid = low + (high - low) / 2;
       int cmp = toFind.compareTo(values[mid]);
 
       if (cmp < 0) {
