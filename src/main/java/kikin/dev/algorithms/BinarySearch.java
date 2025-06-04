@@ -21,6 +21,26 @@ public class BinarySearch {
     return -1;
   }
 
+  public static int safeBinarySearch(int[] values, int target) {
+    int low = 0;
+    int high = values.length - 1;
+
+    while (low <= high) {
+      int middle = low + (high - low) / 2;
+      int midVal = values[middle];
+
+      if (target > midVal) {
+        low = middle + 1;
+      } else if (target < midVal) {
+        high = middle - 1;
+      } else {
+        return middle;
+      }
+    }
+
+    return -1;
+  }
+
   public static <T extends Comparable<T>> int genericBinarySearch(T[] values, T toFind) {
     int low = 0;
     int high = values.length - 1;

@@ -20,6 +20,12 @@ public class BinarySearchTest {
   }
 
   @Test
+  public void testSafeBinarySearch() {
+    assertEquals(6, BinarySearch.safeBinarySearch(test1, 14));
+    assertEquals(4, BinarySearch.safeBinarySearch(test2, 7));
+  }
+
+  @Test
   public void testGenericBinarySearch() {
     assertEquals(6, BinarySearch.genericBinarySearch(testGen1, 14));
     assertEquals(4, BinarySearch.genericBinarySearch(testGen2, 7));
